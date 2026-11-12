@@ -4,11 +4,10 @@ import OCR
 
 app = Flask(__name__)
 
-
 @app.route('/')
-def welcome():
-   return "Hello! Let us learn about importance of Exercise!"
+def index():
+    user = {'username': 'Kyra'}
+    return render_template('index.html', title='Attendance Checker', user=user)
 
-if(__name__ == "__main__"):
-   app.run(debug=True, port=4200)
-
+if __name__ == '__main__':
+    app.run(debug=True)
