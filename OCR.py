@@ -3,10 +3,6 @@ import numpy as np
 import re
 
 
-
-
-
-
 text = '''
 Thu Nov 5, 2026
 Teacher Absence - Unexcused
