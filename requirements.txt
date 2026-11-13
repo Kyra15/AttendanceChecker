@@ -1,3 +1,5 @@
 flask
 pandas
 numpy
+pillow_heif
+cohere

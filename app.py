@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import OCR
+import OCR_utility
 
 
 app = Flask(__name__)

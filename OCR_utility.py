@@ -5,93 +5,9 @@ import re
 import pillow_heif
 import cohere
 
-text = '''
-Thu Nov 5, 2026
-Teacher Absence - Unexcused
-2
-Application Innovation HON
-Thu Nov 5, 2026
-Activity (Other)
-6-8
-View Classes
-Mon Nov 2, 2026
-Excused Absence (Illness)
-1-8
-View Classes
-Thu Oct 29, 2026
-Excused Absence
-5-8
-View Classes
-Wed Oct 28, 2026
-Excused Absence
-1
-US Government & Politics AP
-Tue Oct 27, 2026
-Activity (Acad/College Advising Visit)
-5
-English Lit & Comp AP
-Mon Oct 26, 2026
-Activity (Internship)
-1-7
-View Classes
-Mon Oct 19, 2026
-Activity (Acad/College Advising Visit)
-2
-Application Innovation HON
-Fri Oct 16, 2026
-Activity (In School Activity)
-5
-English Lit & Comp AP
-Thu Oct 15, 2026
-Excused Absence
-1
-US Government & Politics AP
-Thu Oct 15, 2026
-Tardy - Excused
-2
-Application Innovation HON
-Tue Oct 13, 2026
-Activity (Acad/College Advising Visit)
-2
-Application Innovation HON
-Mon Oct 12, 2026
-Excused Absence
-1-3
-View Classes
-Fri Oct 9, 2026
-Excused Absence
-1
-US Government & Politics AP
-Fri Oct 9, 2026
-Tardy - Excused
-2
-Application Innovation HON
-Thu Oct 8, 2026
-Excused Absence (Illness)
-1-8
-View Classes
-Wed Oct 7, 2026
-Teacher Absence - Unexcused
-7
-Macroeconomics AP
-Mon Oct 5, 2026
-Activity (College Visitations)
-4
-Physics C: Elect & Mag AP
-Thu Oct 1, 2026
-Teacher Absence - Unexcused
-7
-Macroeconomics AP
-Mon Sep 28, 2026
-Activity (College Visitations)
-6
-Calculus BC Competition AP
-Fri Sep 25, 2026
-Excused Absence
-1-2
-View Classes
-Fri Sep 25, 2026
-'''
+
+# call cohere ocr api with prompt
+text = ''''''
 
 line_lst = text.split("\n")[1:-1]
 # print(line_lst, len(line_lst))
