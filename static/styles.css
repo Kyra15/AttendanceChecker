@@ -2,12 +2,14 @@
 
 body{
   padding: 25px;
-  font-family: 'Darumadrop One', sans-serif;
+  
+  font-family: "LXGW WenKai Mono TC", monospace;
   background-color: #EEEEEE;
 }
 
-.title {
+h1 {
 	color: #071B2B;
+	font-family: 'Darumadrop One', sans-serif;
 }
 
 p {
