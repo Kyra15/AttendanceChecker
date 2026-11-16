@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <title>attendance checker</title></title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>attendance checker</h1>
-    <h2>upload screenshots of your attendance</h2>
+    <p>upload screenshots of your skyward attendance like this -> <span>img</span></p>
     <form action="/upload" method="POST" enctype="multipart/form-data">
-      <label for="file-upload">Choose a file:</label>
+      <label for="file-upload">choose your file: </label>
       <input type="file" id="file-upload" name="files[]" multiple>
       <button type="submit">Upload</button>
     </form>
