@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-import OCR_utility
+# import OCR_utility
 import cohere
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -107,6 +107,7 @@ def health():
 def upload():
     data = request.get_json(silent=True) or {}
     images = data.get("images")
+
     if images is None and data.get("imageBase64"):
         images = [data["imageBase64"]]
 
