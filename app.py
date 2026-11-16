@@ -11,6 +11,7 @@ from PIL import Image
 import numpy as np
 import io
 import pillow_heif
+from concurrent.futures import ThreadPoolExecutor
 
 
 load_dotenv()
@@ -104,11 +105,25 @@ def health():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if request.method == 'POST':
-        # handle form submission and apply ocr
-        pass
-    else:
-        pass
+    data = request.get_json(silent=True) or {}
+    images = data.get("images")
+    if images is None and data.get("imageBase64"):
+        images = [data["imageBase64"]]
+
+    def run(numbered):
+        page, b64 = numbered
+        try:
+            return page, read_page(b64), None
+        except ImgError as e:
+            return page, None, e
+
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        results = list(pool.map(run, enumerate(images, start=1)))
+
+    texts = [text for _, text, err in results if err is None]
+
+    return jsonify(texts)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
