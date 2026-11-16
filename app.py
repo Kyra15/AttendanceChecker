@@ -38,7 +38,7 @@ class ImgError(Exception):
 
 
 
-def decode_image(image_base64):
+def decode_image(img_raw):
     if "," in image_base64:
         image_base64 = image_base64.split(",", 1)[1]
 
@@ -54,17 +54,16 @@ def decode_image(image_base64):
     return image
 
 
-def read_page(image_base64):
-    try:
-        image = decode_image(image_base64)
-    except (binascii.Error, ValueError, OSError, cv2.error, Image.DecompressionBombError):
-        raise ImgError("unreadable", "That image could not be opened. Try retaking it.")
-    
-    success, encoded_img = cv2.imencode(".jpg", image)
+def read_page(img):
+    img = img.read()
+    file_bytes = np.frombuffer(img, np.uint8)
+    encoded_img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+    success, buffer = cv2.imencode(".jpg", encoded_img)
     if not success:
-        raise ImgError("unreadable", "That image could not be processed. Try retaking it.")
+        raise ImgError("unreadable", "That image could not be processed. Try resubmitting it.")
 
-    data_uri = "data:image/jpeg;base64," + base64.b64encode(encoded_img).decode("utf-8")
+    b64_str = base64.b64encode(buffer).decode("utf-8")
+    data_uri = f"data:image/jpeg;base64,{b64_str}"
 
     try:
         response = co.chat(
@@ -105,16 +104,12 @@ def health():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    data = request.get_json(silent=True) or {}
-    images = data.get("images")
-
-    if images is None and data.get("imageBase64"):
-        images = [data["imageBase64"]]
+    images = request.files.getlist('files[]')
 
     def run(numbered):
-        page, b64 = numbered
+        page, raw = numbered
         try:
-            return page, read_page(b64), None
+            return page, read_page(raw), None
         except ImgError as e:
             return page, None, e
 

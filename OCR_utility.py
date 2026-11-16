@@ -7,7 +7,15 @@ import cohere
 
 
 # call cohere ocr api with prompt
-text = ''''''
+text ='''Tue Sep 15, 2026, Activity (In School Activity), 1-2, View Classes\n
+Tue Sep 15, 2026, Teacher Absence - Unexcused, 3, Multivariable Calculus HH\n
+Mon Sep 14, 2026, Excused Absence, 3, Multivariable Calculus HH\n
+Mon Sep 14, 2026, Tardy - Excused, 4, Physics C: Elect & Mag AP\n
+Wed Sep 9, 2026, Activity (In School Activity), 7, Macroeconomics AP\n
+Thu Sep 3, 2026, Activity (In School Activity), 1, US Government & Politics AP\n
+Fri Aug 28, 2026, Activity (In School Activity), 3, Multivariable Calculus HH'''
+
+# maybe split on the year? 
 
 line_lst = text.split("\n")[1:-1]
 # print(line_lst, len(line_lst))
