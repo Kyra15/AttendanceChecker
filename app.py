@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-# import OCR_utility
+from OCR_utility import *
 import cohere
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -22,8 +22,8 @@ co = cohere.ClientV2(api_key) if api_key else None
 
 PROMPT_OCR = (
     "Transcribe every piece of visible text in this image exactly as it "
-    "appears, in reading order. Do not summarize, explain, or add commentary."
-    "Output only the transcribed text."
+    "appears, output one row per line, cells in that order. Do not summarize, explain, or add commentary."
+    "Output only the transcribed text with pipes ('|') only between cells (not around). Ignore all headers."
 )
 
 app = Flask(__name__)
@@ -118,8 +118,16 @@ def upload():
 
     texts = [text for _, text, err in results if err is None]
 
-    return jsonify(texts)
+    # return jsonify(texts)
+
+    final_text = "\n".join(texts)
+    print(final_text)
+
+    df = init_csv(final_text)
+    absences = count_absences(df)
+
+    return jsonify(absences)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4200)
