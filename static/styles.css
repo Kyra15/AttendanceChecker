@@ -1,1 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=LXGW+WenKai+Mono+TC&display=swap');
 
+body{
+  padding: 25px;
+  font-family: 'Darumadrop One', sans-serif;
+  background-color: #EEEEEE;
+}
+
+.title {
+	color: #071B2B;
+}
+
+p {
+    font-family: "LXGW WenKai Mono TC", monospace;
+}
