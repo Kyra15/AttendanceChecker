@@ -3,3 +3,6 @@ pandas
 numpy
 pillow_heif
 cohere
+flask-cors
+dotenv
+opencv-python
