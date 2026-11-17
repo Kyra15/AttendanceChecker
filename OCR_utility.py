@@ -34,7 +34,7 @@ def init_csv(text):
 
     filter_df = df[~df["Absence"].astype(str).str.contains("Activity", na=False)]
     filter_df = filter_df[~filter_df["Absence"].astype(str).str.contains("Tardy")]
-    filter_df = filter_df.drop(columns=["Date", "Class"])
+    filter_df = filter_df.drop(columns=["Date", "Class"]).copy()
 
     return filter_df
 # print(filter_df.head(7))
@@ -52,12 +52,13 @@ def expand_range(match):
 
 
 def parse_num(text):
-   if not isinstance(text, str) or not text.strip():
-        return ""
+#    if not isinstance(text, str):
+#         print("skipped")
+#         return ""
    text_list = text.split("&")
    text = ", ".join(text_list)
 
-   pattern = r"^(\d+)-(\d+)$"
+   pattern = r"(\d+)\s*[-–]\s*(\d+)"
    final = re.sub(pattern, expand_range, text)
    return final
 

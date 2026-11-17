@@ -38,7 +38,7 @@ class ImgError(Exception):
 
 
 
-def decode_image(img_raw):
+def decode_image(image_base64):
     if "," in image_base64:
         image_base64 = image_base64.split(",", 1)[1]
 
@@ -47,7 +47,7 @@ def decode_image(img_raw):
     image = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
 
     if image is None:
-        # opencv can't read heic, fall back to pillow (ios photos)
+        # opencv can't read heic, fall back to pillow
         pil_img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
         image = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
 
