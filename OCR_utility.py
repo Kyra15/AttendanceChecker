@@ -3,9 +3,6 @@ import numpy as np
 import re
 import io
 
-import pillow_heif
-import cohere
-
 
 # call cohere ocr api with prompt
 # text ='''Tue Sep 15, 2026, Activity (In School Activity), 1-2, View Classes\n
@@ -19,14 +16,6 @@ import cohere
 # maybe split on the year? need to figure out how to read this 
 # bc rn its a csv but the commas in the date throw it off
 # or i genuinely just ignore the date LMAO
-
-# line_lst = text.split("\n")[1:-1]
-# # print(line_lst, len(line_lst))
-
-# reshaped_data = np.array(line_lst).reshape(-1, 4)
-# df = pd.DataFrame(reshaped_data, columns=["Date", "Absence", "Period", "Class"])
-# # print(df.head(7))
-
 
 def init_csv(text):
 
