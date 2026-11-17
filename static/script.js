@@ -21,8 +21,10 @@ dropZone.addEventListener('drop', (e) => {
     if (files.length > 0) {
         fileInput.files = files;
         dropText.textContent = files[0].name;
-        if (files.length > 1) {
-            dropText.textContent += " & " + (files.length - 1) + " more files"
+        if (fileInput.files.length > 1) {
+            dropText.textContent += " & " + (fileInput.files.length - 1) + " more file"
+        } else if (fileInput.files.length > 2) {
+            dropText.textContent += " & " + (fileInput.files.length - 1) + " more files"
         }
     }
 });
@@ -30,8 +32,10 @@ dropZone.addEventListener('drop', (e) => {
 fileInput.addEventListener('change', () => {
     if (fileInput.files.length > 0) {
         dropText.textContent = fileInput.files[0].name;
-        if (fileInput.files.length > 1) {
-            dropText.textContent += " & " + (files.length - 1) + " more files"
+        if (fileInput.files.length == 2) {
+            dropText.textContent += " & " + (fileInput.files.length - 1) + " more file"
+        } else if (fileInput.files.length > 2) {
+            dropText.textContent += " & " + (fileInput.files.length - 1) + " more files"
         }
     }
 });
