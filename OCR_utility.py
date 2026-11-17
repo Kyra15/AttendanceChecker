@@ -32,8 +32,8 @@ def init_csv(text):
 
     df = pd.read_csv(io.StringIO(text), names=["Date", "Absence", "Period", "Class"], sep='|')
 
-    filter_df = df[~df["Absence"].str.contains("Activity")]
-    filter_df = filter_df[~filter_df["Absence"].str.contains("Tardy")]
+    filter_df = df[~df["Absence"].astype(str).str.contains("Activity", na=False)]
+    filter_df = filter_df[~filter_df["Absence"].astype(str).str.contains("Tardy")]
     filter_df = filter_df.drop(columns=["Date", "Class"])
 
     return filter_df
