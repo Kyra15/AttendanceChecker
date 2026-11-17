@@ -5,4 +5,4 @@ pillow_heif
 cohere
 flask-cors
 dotenv
-opencv-python-headless
+opencv-python-headless<5.1
