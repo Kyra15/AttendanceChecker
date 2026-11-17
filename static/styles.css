@@ -1,17 +1,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=LXGW+WenKai+Mono+TC&display=swap');
 
+html { 
+  height: 100%; 
+}
+
 body{
-  padding: 25px;
-  
   font-family: "LXGW WenKai Mono TC", monospace;
-  background-color: #EEEEEE;
+  display: flex;
+  flex-direction: column;
+  background-color: #071B2B;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%
 }
 
 h1 {
 	color: #071B2B;
 	font-family: 'Darumadrop One', sans-serif;
+  font-size: 3rem
 }
 
 p {
     font-family: "LXGW WenKai Mono TC", monospace;
+    font-size: 1.5rem
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  background-color: #B9E4E8;
+  padding: 40px;
+  width: 50%;
+  height: 100%;
+}
+
+.drop-zone {
+  width: 100%;
+  height: 240px;
+  border: 2px dashed #071B2B;
+  border-radius: 16px;
+  background-color: #B9E4E8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #071B2B;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+  border-color: #167D8D;
+  background-color: #EEEEEE;
+  color: #167D8D;
+}
+
+.drop-zone svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  stroke: currentColor;
+}
+
+.drop-zone p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.drop-zone span {
+  font-size: 1rem;
+  color: #167D8D;
+  margin-top: 6px;
+}
+
+.drop-zone input[type="file"] {
+  display: none;
+}
+
+
+button {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  background-color: #167D8D;
+  color: #EEEEEE;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: 'Darumadrop One', sans-serif;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #071B2B;
+  color: #EEEEEE;
+}
+
+.text-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.img-class {
+  border: 4px solid #071B2B;
+  border-radius: 10px;
+}
+
+.uploaded {
+  display: none;
 }

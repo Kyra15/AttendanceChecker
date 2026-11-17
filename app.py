@@ -118,10 +118,8 @@ def upload():
 
     texts = [text for _, text, err in results if err is None]
 
-    # return jsonify(texts)
-
     final_text = "\n".join(texts)
-    print(final_text)
+    # print(final_text)
 
     df = init_csv(final_text)
     absences = count_absences(df)
