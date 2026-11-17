@@ -12,25 +12,37 @@
             <p>like this -></p>
             <img src="static/example.png" width="400" height="150" class="img-class">
         </div>
+        <p>to see the # of absences that would count towards midterms</p>
+        <!-- <div class="selectors">
+            <input type="radio" id="absences" name="type" value="absences">
+            <label for="absences">absences</label><br>
+            <input type="radio" id="tardies" name="type" value="tardies">
+            <label for="tardies">tardies</label><br>
+            <input type="radio" id="all" name="type" value="all">
+            <label for="all">all</label>
+        </div> -->
         <form id="submit-form" action="/upload" method="POST" enctype="multipart/form-data">
             <label class="drop-zone" id="drop-zone" for="file-upload">
-                <!-- Upload Icon -->
                 <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                 </svg>
-                <p id="drop-text">Drag & drop files here</p>
+                <p id="drop-text">drag & drop files here</p>
                 <p>or click to browse</p>
                 <span>(you can upload multiple)</span>
                 <input type="file" id="file-upload" name="files[]" multiple>
             </label>
-            <button type="submit">Upload</button>
+            <button type="submit" class="submit">upload</button>
         </form>
     </div>
 
     <div class="container uploaded">
         <h1>attendance checker</h1>
-        <p>absence counts (the ones that would count towards midterms)</p>
-        <h2 id="results" style="white-space: pre-line;"></h2>
+        <p>absence counts</p>
+        <progress id="progress-bar" max="100" value="0"></progress>
+        <p id="results" style="white-space: pre-line;"></p>
+
+        <br>
+        <button onclick="goBack()" class="back">back</button>
     </div>
     <script src="./static/script.js" defer></script>
 </body>

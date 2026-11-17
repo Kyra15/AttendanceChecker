@@ -36,6 +36,8 @@ p {
   padding: 40px;
   width: 50%;
   height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .drop-zone {
@@ -73,7 +75,6 @@ p {
 .drop-zone p {
   margin: 0;
   font-size: 1.2rem;
-  font-weight: 500;
 }
 
 .drop-zone span {
@@ -99,7 +100,14 @@ button {
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.submit {
   width: 100%;
+}
+
+.back{
+  display: none;
 }
 
 button:hover {
@@ -123,4 +131,49 @@ button:hover {
 
 .uploaded {
   display: none;
+}
+
+.selectors {
+  display: flex;
+  flex-direction: row;
+  margin: 12px;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* i despise progress bar styling */
+#progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  border: none;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#progress-bar::-webkit-progress-bar {
+  background-color: #EEEEEE;
+}
+
+#progress-bar::-webkit-progress-value {
+  background-color: #167D8D;
+}
+
+progress::-webkit-progress-value {
+  background-color: #167D8D;
+  transition: width 0.3s ease-out;
+}
+
+#progress-bar::-moz-progress-bar {
+  background-color: #167D8D;
+}
+
+progress::-moz-progress-bar {
+  background-color: #167D8D;
+  transition: width 0.3s ease-out;
 }
