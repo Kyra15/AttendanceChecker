@@ -21,9 +21,10 @@ api_key = os.environ.get("API_KEY")
 co = cohere.ClientV2(api_key) if api_key else None
 
 PROMPT_OCR = (
-    "Transcribe every piece of visible text in this image exactly as it "
-    "appears, output one row per line, cells in that order. Do not summarize, explain, or add commentary."
-    "Output only the transcribed text with pipes ('|') only between cells (not around). Ignore all headers."
+    "Transcribe the table rows in this image. Output exactly one table row per line, "
+    "joining any wrapped text inside a cell with a single space. "
+    "Separate the 4 columns (Date, Attendance, Period, Class) with pipes ('|') only between cells. "
+    "Ignore the header row. Do not output markdown formatting, explanations, or blank lines."
 )
 
 app = Flask(__name__)
