@@ -66,7 +66,7 @@ def parse_num(text):
 def count_absences(filter_df):
     filter_df["Parsed_Periods"] = filter_df["Period"].apply(parse_num)
 
-    print(filer_df)
+    print(filter_df)
 
     final_counts = []
     for i in range(7):
