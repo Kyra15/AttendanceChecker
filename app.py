@@ -21,8 +21,7 @@ api_key = os.environ.get("API_KEY")
 co = cohere.ClientV2(api_key) if api_key else None
 
 PROMPT_OCR = (
-    "Transcribe the table rows in this image. Output exactly one table row per line, "
-    "joining any wrapped text inside a cell with a single space. "
+    "Transcribe the table rows in this image. Output exactly one table row per line. "
     "Separate the 4 columns (Date, Attendance, Period, Class) with pipes ('|') only between cells. "
     "Ignore the header row. Do not output markdown formatting, explanations, or blank lines."
 )
