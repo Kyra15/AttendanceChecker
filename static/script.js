@@ -92,7 +92,7 @@ form.addEventListener("submit", async (event) => {
 
 function estimateMs(fileCount) {
     const batches = Math.ceil(fileCount / 3);
-    return batches * 8000;
+    return batches * 10000;
 }
 
 function startPsuedoProgress(bar, estimate) {
