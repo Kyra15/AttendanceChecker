@@ -52,7 +52,7 @@ def expand_range(match):
 
 
 def parse_num(text):
-    if not isinstance(text, str) or not text.strip():
+   if not isinstance(text, str) or not text.strip():
         return ""
    text_list = text.split("&")
    text = ", ".join(text_list)
