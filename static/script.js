@@ -72,10 +72,13 @@ form.addEventListener("submit", async (event) => {
             throw new Error("Server error: " + response.status);
         }
 
-        const absences = await response.json();
+        const result_json = await response.json();
+
+        const absences = result_json["absences"]
+        const tardies = result_json["tardies"]
         
         bar.value = 100;
-        const lines = absences.map((count, i) => `period ${i + 1}: ${count}`);
+        const lines = absences.map((count, i) => `period ${i + 1}: ${count} absences (${tardies[i]} tardies)`);
         document.getElementById("results").textContent = lines.join("\n");
 
         backButton.style.display = "block"

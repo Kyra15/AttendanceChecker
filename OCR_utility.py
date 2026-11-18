@@ -18,11 +18,8 @@ import io
 # or i genuinely just ignore the date LMAO
 
 def init_csv(text):
-
     df = pd.read_csv(io.StringIO(text), names=["Date", "Absence", "Period", "Class"], sep='|', dtype=str, keep_default_na=False)
-
     filter_df = df[~df["Absence"].astype(str).str.contains("Activity", na=False)]
-    filter_df = filter_df[~filter_df["Absence"].astype(str).str.contains("Tardy")]
     filter_df = filter_df.drop(columns=["Date", "Class"]).copy()
 
     return filter_df
@@ -53,10 +50,10 @@ def parse_num(text):
 
 
 # loop through df, run parse num on every period column, then replace the period column with the final
-def count_absences(filter_df):
-    filter_df["Parsed_Periods"] = filter_df["Period"].apply(parse_num)
+def count_absences(df):
+    filter_df = df[~df["Absence"].astype(str).str.contains("Tardy")].copy()
 
-    print(filter_df)
+    filter_df["Parsed_Periods"] = filter_df["Period"].apply(parse_num)
 
     final_counts = []
     for i in range(7):
@@ -64,3 +61,15 @@ def count_absences(filter_df):
 
     return final_counts
 
+def count_tardies(df):
+    filter_df = df[~df["Absence"].astype(str).str.contains("Absence")].copy()
+
+    filter_df["Parsed_Periods"] = filter_df["Period"].apply(parse_num)
+    
+    print("tardy", filter_df)
+
+    final_counts = []
+    for i in range(7):
+        final_counts.append(int(filter_df["Parsed_Periods"].str.count(str(i+1)).sum()))
+
+    return final_counts

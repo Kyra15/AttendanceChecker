@@ -123,8 +123,11 @@ def upload():
 
     df = init_csv(final_text)
     absences = count_absences(df)
+    tardies = count_tardies(df)
 
-    return jsonify(absences)
+    result_json = {"absences": absences, "tardies": tardies}
+
+    return jsonify(result_json)
 
 
 if __name__ == '__main__':
